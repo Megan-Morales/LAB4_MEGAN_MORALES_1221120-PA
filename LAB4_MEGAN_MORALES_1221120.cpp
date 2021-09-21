@@ -1,8 +1,12 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 int num_Nodos = 1; //variable global
+int posicion_conejo = 1;
+int posicion_liebre = 1;
 
 struct nodo { //Nodos de la lista
 	int id_Posicion=0;
@@ -15,20 +19,72 @@ struct nodo { //Nodos de la lista
 void comenzarCarrera();
 void insertarNodo();
 void mostrarLista();
+int funcionRandom();
+void moverTortuga();
 
 int main() {
+	srand(time(NULL));
 	for (int i = 0; i < 70; i++) {
 		insertarNodo();
 	}
 	comenzarCarrera();
-	mostrarLista();
+	moverTortuga();
+}
+
+int funcionRandom() {
+	int numeroAleatorio = 0;
+	numeroAleatorio = 1 + rand() % (10);
+	return numeroAleatorio;
+	
+}
+void moverTortuga() {
+	nodo* nodo_Temporal = new nodo();
+	nodo_Temporal = primero;
+	
+	
+	for (int i=0; i < 3; i++) {
+		int numero = funcionRandom();
+
+		if (numero <= 5) {
+			
+			for (int i = 0; i < 3; i++) {
+				nodo_Temporal->siguiente;
+				nodo_Temporal->id_Posicion++;
+
+			}
+			posicion_conejo = nodo_Temporal->id_Posicion;
+		}
+		else if (numero > 5 && numero <= 7) {
+			for (int i = 0; i < 6; i++) {
+				nodo_Temporal->atras;
+				nodo_Temporal->id_Posicion--;
+			}
+			posicion_conejo = nodo_Temporal->id_Posicion;
+		}
+		else if (numero > 7 && numero <= 10) {
+			for (int i = 0; i < 1; i++) {
+				nodo_Temporal->siguiente;
+				nodo_Temporal->id_Posicion++;
+				
+			}
+			posicion_conejo = nodo_Temporal->id_Posicion;
+		}
+	}
+	if (posicion_conejo < 1) {
+		posicion_conejo = 1;
+	}
+	
+	cout << "" + to_string(posicion_conejo);
+	
 }
 
 void comenzarCarrera() {
-	nodo* nodo_Temporal = new nodo();
-	nodo_Temporal = primero;
-	nodo_Temporal->liebre_en_Nodo = true;
-	nodo_Temporal->tortuga_en_Nodo = true;
+	primero->liebre_en_Nodo = true;
+	primero->tortuga_en_Nodo = true;
+	cout << "              ---------------------------------- BANG! ----------------------------------" << endl;
+	cout << "              |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+	cout << "              ------------------------------- Y ARRANCA! --------------------------------"<< endl<<endl;
+	mostrarLista();
 }
 void insertarNodo() {
 	nodo* nuevo = new nodo();
@@ -50,6 +106,7 @@ void insertarNodo() {
 void mostrarLista() {
 	nodo* nodo_Temporal = new nodo();
 	nodo_Temporal = primero;
+	
 
 	if (primero != NULL) {
 		int contador = 1;
@@ -58,18 +115,19 @@ void mostrarLista() {
 
 			if (nodo_Temporal->liebre_en_Nodo == true && nodo_Temporal->tortuga_en_Nodo==true) {
 
-				cout << "|L,T|";
+				cout << "    |L,T| ";
 			}
 			else if (nodo_Temporal->liebre_en_Nodo == true ) {
 
-				cout << "|L  |";
+				cout << "    |L, | ";
 			}
 			else if (nodo_Temporal->tortuga_en_Nodo==true) {
 
-				cout << "|  T|";
+				
+				cout << "    | ,T| ";
 			}
 			else {
-				cout << "|   |";
+				cout << "    | , | ";
 			}
 			if (contador % 10 == 0) {
 				cout << endl;
@@ -81,5 +139,6 @@ void mostrarLista() {
 	else {
 		cout << "\n La lista se encuentra vacia\n\n";
 	}
+	
 
 }
