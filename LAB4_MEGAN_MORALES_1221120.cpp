@@ -5,8 +5,6 @@
 
 using namespace std;
 int num_Nodos = 1; //variable global
-int posicion_Tortuga = 1;
-int posicion_Liebre = 1;
 
 struct nodo { //Nodos de la lista
 	int id_Posicion=0;
@@ -42,8 +40,24 @@ int main() {
 		moverTortuga(nodo_Temporal);
 		moverLiebre(nodo_Temporal);
 		mostrarLista();
+		
 	}
+	if (nodo_Temporal->id_Posicion_Tortuga = 70 && nodo_Temporal->id_Posicion_Liebre<70) {
+		cout << endl << "              ---------------------------------------------------------------------------" << endl;
+		cout << "              ||||||||||||||||||||||||||||||||||||||META|||||||||||||||||||||||||||||||||" << endl;
+		cout << "              ---------------------------------------------------------------------------" << endl << endl;
 
+		cout << "                                          LA TORTUGA GANA! BRAVO! " << endl;
+	}
+	else {
+		cout << endl << "              ---------------------------------------------------------------------------" << endl;
+		cout << "              ||||||||||||||||||||||||||||||||||||||META|||||||||||||||||||||||||||||||||" << endl;
+		cout << "              ---------------------------------------------------------------------------" << endl << endl;
+
+		cout << "                                        LA LIEBRE GANA! NI HABLAR! " << endl;
+	}
+	
+	
 }
 
 int funcionRandom() {
@@ -187,6 +201,7 @@ void resetearPosiciones(string animal) {
 		}
 		nodo_Temp = nodo_Temp->siguiente;
 	}
+	
 }
 
 void insertarNodo() {
@@ -217,9 +232,13 @@ void mostrarLista() {
 
 		while (nodo_Temporal != NULL) {
 
-			if (nodo_Temporal->liebre_en_Nodo == true &&  nodo_Temporal->tortuga_en_Nodo==true) {
+			if (contador==1) {
 				
 				cout << "    |L,T| ";
+			}
+			else if (nodo_Temporal->liebre_en_Nodo == true && nodo_Temporal->tortuga_en_Nodo == true) {
+
+				cout << "    |AUH| ";
 			}
 			else if (nodo_Temporal->liebre_en_Nodo == true ) {
 
