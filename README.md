@@ -1,4 +1,4 @@
-# LAB4_MEGAN_MORALES_1221120-PA
+# Simulación de la carrera de la libre y la tortuga
 La liebre y la tortuga: En este problema, recreará la carrera clásica de la tortuga
 y la liebre, se valdrá de la generación de números aleatorios para desarrollar la
 simulación de este memorable evento.
